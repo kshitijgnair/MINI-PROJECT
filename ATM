@@ -1,0 +1,79 @@
+#include <iostream>
+using namespace std;
+//Global Variables
+int balance =20000,k,amount,c;
+char ch;
+
+//Function Prototypes...
+void quit();
+void withdraw(int amount);
+void deposit(int amount);
+void check_balance();
+
+//Function Declarations....
+void check_balance(){
+    cout<<"Your Account Balance is : "<<balance<<endl;
+}
+
+void withdraw(int amount){
+    cout<<"Your current Account Balance is : "<<balance<<endl;
+    if(balance-amount>=0){
+        balance -= amount;
+        cout<<"Transaction Successfull" <<endl;
+        cout<<"Cash Withdrawn ="<<amount<<endl;
+        cout<<"Your current Account Balance is : "<<balance<<endl;
+    }else{
+        cout<<"Transaction Failed - Insufficent Balance"<<endl;
+        cout<<"Your current Account Balance is : "<<balance<<endl;
+    }
+}
+
+void deposit(int amount){
+    cout<<"Your current Account Balance is : "<<balance<<endl;
+    balance += amount;
+    cout<<"Transaction Successfull\nAmount Deposited = "<<amount<<endl;
+    cout<<"Your current Account Balance is : "<<balance<<endl;
+}
+
+void quit(){
+    cout<<"ThankYou for using Our ATM service:D:D"<<endl;
+}
+
+int main(){
+    int pin;
+    cout<<"========Welcome========"<<endl;
+    cout<<"Enter Your Pin code(i.e 1005) : ";
+    cin>>pin;
+    while(pin!=1005){
+        cout<<"Invalid pin code,Please enter valid Pin code"<<endl;
+        cout<<"========Welcome========"<<endl;
+        cout<<"Enter Your Pin code(i.e 1005) : ";
+        cin>>pin;
+    }
+    do{
+        cout<<"==========Welcome to ATM Service=========="<<endl;
+        cout<<"Enter 1 to check account balance"<<endl;
+        cout<<"Enter 2 to withdraw cash from account"<<endl;
+        cout<<"Enter 3 to deposit cash to the account"<<endl;
+        cout<<"Enter 4 to quit the ATM Service"<<endl;
+        cout<<"Enter Your Choice : ";
+        cin>>c;
+        switch(c){
+            case 1 :check_balance();
+                    break;
+            case 2 :cout<<"Enter the amount to be Withdrawn : ";
+                    cin>>amount;
+                    withdraw(amount);
+                    break;
+            case 3 :cout<<"Enter the amount to be Deposited : ";
+                    cin>>amount;
+                    deposit(amount);
+                    break;
+            case 4 :quit();
+                    break;
+            default:printf("Invalid Choice pls try again\n");
+        }
+    }while(c!=4);
+
+    return 0;
+}
